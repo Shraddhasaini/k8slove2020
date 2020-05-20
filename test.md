@@ -38,7 +38,7 @@ RUN chmod +x /scripts/start.sh
 ENTRYPOINT ["/bin/bash","/scripts/start.sh"]
 ```
 
-#### Git clone
+#### Git clone command
 ```shell
 git clone https://github.com/mdn/beginner-html-site-styled
 git clone https://github.com/microsoft/project-html-website
@@ -62,7 +62,7 @@ else
 	httpd -DFOREGROUND
 fi
 ```
-#### Docker build
+#### Docker build command
 ```shell
 docker build -f adhochttpd.dockerfile -t shraddhasaini/may2020q1:v1 .
 ```
@@ -77,3 +77,47 @@ docker build -f adhochttpd.dockerfile -t shraddhasaini/may2020q1:v1 .
 >
 >create a service called q2svcyourname example q2svcashu of NodePort type and check by accessing it
 >
+
+##### q2.yml
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    adhoc: shraddhasainiq2
+  name: adhocpod1
+spec:
+  containers:
+  - image: nginx
+    name: adhocpod1
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+#### command
+```shell
+kubectl create -f q2.yaml
+```
+
+#### q2svcshraddhasaini.yml
+```shell
+apiVersion: v1
+kind: Service
+metadata:
+  name: q2svcshraddhasaini
+spec:
+  type: NodePort
+  selector:
+    adhoc: shraddhsainiq2
+  ports:
+    - port: 80
+      targetPort: 80
+```
+#### Command
+```shell
+kubectl create -f q2svcshraddhasaini.yml
+```
