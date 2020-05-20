@@ -196,3 +196,59 @@ kubectl create -f q3svcshraddhasaini.yml
 >label of the pod must be adhoc:yournameq4 like adhoc:ashuq4
 >
 >create a service called q4svcyourname example q4svcashu of Loadbalancer type and check by accessing it
+
+##### q4rs.yaml
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: adhocrsshraddhasaini4
+  labels:
+    app: adhocrsshraddhasainii4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      adhoc: shraddhasainiq4 
+  template:
+    metadata:
+      name: adhocpod4
+      labels:
+        adhoc: shraddhasainiq4
+    spec:
+      containers:
+      - env:
+        - name: x
+          value: app2
+        image: shraddhasaini/may2020q1:v1
+        imagePullPolicy: Always
+        name: adhocpod4
+        ports:
+        - containerPort: 80
+```
+#### Command
+```shell
+kubectl create -f q4rs.yaml
+```
+#### q4svcshraddhasaini.yaml
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: adhocrsshraddhasaini4
+  name: q4svcshraddhasaini
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    adhoc: shraddhasainiiq4
+  type: LoadBalancer
+```
+#### Command
+```shell
+kubectl create -f q4svcshraddhasaini.yaml
+```
