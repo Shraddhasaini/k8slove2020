@@ -79,7 +79,7 @@ docker build -f adhochttpd.dockerfile -t shraddhasaini/may2020q1:v1 .
 >
 
 ##### q2.yml
-```
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -104,7 +104,7 @@ kubectl create -f q2.yaml
 ```
 
 #### q2svcshraddhasaini.yml
-```shell
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -138,3 +138,52 @@ kubectl create -f q2svcshraddhasaini.yml
 >NodePort must be some custom port in the range of 30000-32000 make sure someone is not using the same port number
 >
 
+#### q3.yml
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    adhoc: shraddhasainiq3
+  name: adhocpod2
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: ip-172-31-36-77.ec2.internal
+  containers:
+  - env:
+    - name: x
+      value: app2
+    image: shraddhasaini/may2020q1:v1
+    name: adhocpod2
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+#### Command
+```shell
+kubectl create -f q3.yml
+```
+
+#### q3svcshraddhasaini.yml
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: q3svcshraddhasaini
+spec:
+  type: NodePort
+  selector:
+    adhoc: shraddhasainiq3
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 31805
+```
+#### Command
+```shell
+kubectl create -f q3svcshraddhasaini.yml
+```
