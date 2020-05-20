@@ -319,4 +319,4 @@ spec:
 kubectl create -f q5svcshraddhasaini.yaml
 ```
 ----------
-
+### :six: Question 6
