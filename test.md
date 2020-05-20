@@ -137,3 +137,4 @@ kubectl create -f q2svcshraddhasaini.yml
 >
 >NodePort must be some custom port in the range of 30000-32000 make sure someone is not using the same port number
 >
+
