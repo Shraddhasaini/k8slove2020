@@ -371,4 +371,38 @@ spec:
 ```
 kubectl create -f q6svcshraddhasaini.yaml
 ```
+----------
+### :seven: Question 7
+>write a pod file named q7.yaml where your pod name is adhocpod7
+>
+>use alpine docker image and that run date commmand in every 3 seconds and store /mnt/date.txt
+>
+>label of the pod must be adhoc:yournameq7 like adhoc:ashuq7
+>
+>atleast after 3 minutes you can check the output and store output in your local system in file named adhocoutput.txt
+>
+#### q7.yaml
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    adhoc: shraddhasainiq7
+  name: adhocpod7
+spec:
+  containers:
+  - image: alpine
+    name: adhocpod7
+    command: ["/bin/shsh","-c","while true; do date>>/mnt/date.txt; sleep 3; done"]
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+#### Create pod file
+```
+kubectl create -f q7.yaml
+```
+
+
 
