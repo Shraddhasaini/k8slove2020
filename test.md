@@ -121,3 +121,19 @@ spec:
 ```shell
 kubectl create -f q2svcshraddhasaini.yml
 ```
+--------
+### :three: Question 3
+>write a pod file named q3.yaml where your pod name is adhocpod2
+>
+>it must be underyour own namespace use container port 80 with docker image pushed in question 1
+>
+>label of the pod must be adhoc:yournameq3 like adhoc:ashuq3
+>
+>it must host webapp2 configured in docker image
+>
+>pod must be scheduled in minion 2
+>
+>create a service called q3svcyourname example q3svcashu of NodePort type and check by accessing it
+>
+>NodePort must be some custom port in the range of 30000-32000 make sure someone is not using the same port number
+>
