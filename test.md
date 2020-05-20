@@ -320,3 +320,55 @@ kubectl create -f q5svcshraddhasaini.yaml
 ```
 ----------
 ### :six: Question 6
+>write a pod file named portainer.yaml where your pod name is adhocpod6
+>
+>it must be underyour own namespace use container port 9000 and docker image portainer/portainer
+>
+>label of the pod must be adhoc:yournameq6 like adhoc:ashuq6
+>
+>portainer pod must be schedule in minion 3
+>
+>create a service called q6svcyourname example q6svcashu of NodePort type and check by accessing it
+>
+#### portainer.yaml
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    adhoc: shraddhasainiq6
+  name: adhocpod6
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: ip-172-31-41-74.ec2.internal
+  containers:
+  - image: portainer/portainer
+    name: adhocpod6
+    ports:
+    - containerPort: 9000
+```
+#### Command
+```
+kubectl create -f portainer.yaml
+```
+
+#### q6svcshraddhasaini.yaml
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: q6srvshraddhasaini
+spec:
+  type: NodePort
+  selector:
+    adhoc: shraddhasainiq6
+  ports:
+    - port: 9000
+      targetPort: 9000
+```
+#### Command
+```
+kubectl create -f q6svcshraddhasaini.yaml
+```
+
