@@ -112,7 +112,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    adhoc: shraddhsainiq2
+    adhoc: shraddhasainiq2
   ports:
     - port: 80
       targetPort: 80
