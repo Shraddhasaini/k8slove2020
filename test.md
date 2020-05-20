@@ -399,7 +399,7 @@ spec:
   restartPolicy: Never
 status: {}
 ```
-#### Create pod file
+#### Command
 ```
 kubectl create -f q7.yaml
 ```
