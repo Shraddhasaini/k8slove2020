@@ -252,3 +252,71 @@ spec:
 ```shell
 kubectl create -f q4svcshraddhasaini.yaml
 ```
+----------
+### :five: Question 5
+>write a deployment file named q5dep1.yaml where your deployment name is adhocdepyourname5
+>
+>it must be underyour own namespace use container port 80 with docker image pushed in question 1
+>
+>label of the pod must be adhoc:yournameq5 like adhoc:ashuq5
+>
+>make sure 3 pods must be there forever
+>
+>create a service called q5svcyourname example q5svcashu of Loadbalancer type and check by accessing it
+>
+##### q5dep1.yaml
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adhhocdepshraddhasaini5
+  labels:
+    adhoc: shraddhasainiq5
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      adhoc: shraddhasainiq5
+  template:
+    metadata:
+      labels:
+        adhoc: shraddhasainiq5
+    spec:
+       containers:
+        - env:
+          - name: x
+            value: app2
+          image: shraddhasaini/may2020q1:v1
+          imagePullPolicy: Always
+          name: adhocpod2
+          ports:
+          - containerPort: 80
+```
+#### Command
+```
+kubectl create -f q5dep1.yaml
+```
+#### q5svcshraddhasaini.yaml
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    adhoc: q5svcshraddhasaini
+  name: q5svcshraddhasaini
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    adhoc: shraddhasainiq5
+  type: LoadBalancer
+```
+#### Command
+```
+kubectl create -f q5svcshraddhasaini.yaml
+```
+----------
+
