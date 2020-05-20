@@ -66,3 +66,14 @@ fi
 ```shell
 docker build -f adhochttpd.dockerfile -t shraddhasaini/may2020q1:v1 .
 ```
+---------
+
+### :two: Question 2
+>write a pod file named q2.yaml where your pod name is adhocpod1
+>
+>it must be underyour own namespace use container port 80 and docker image nginx
+>
+>label of the pod must be adhoc:yournameq2 like adhoc:ashuq2
+>
+>create a service called q2svcyourname example q2svcashu of NodePort type and check by accessing it
+>
