@@ -187,3 +187,12 @@ spec:
 ```shell
 kubectl create -f q3svcshraddhasaini.yml
 ```
+---------
+### :four: Question 4
+>write a replicasets file named q4rs.yaml where your rs name is adhocrsyourname4
+>
+>it must be underyour own namespace use container port 80 with docker image pushed in question 1
+>
+>label of the pod must be adhoc:yournameq4 like adhoc:ashuq4
+>
+>create a service called q4svcyourname example q4svcashu of Loadbalancer type and check by accessing it
