@@ -403,6 +403,11 @@ status: {}
 ```
 kubectl create -f q7.yaml
 ```
+-----------
+### :eight: Question 8
+>
 
-
+----------
+### :nine: Question 9
+>
 
